@@ -63,7 +63,7 @@ class Help(Cog):
 		await ctx.send(embed=embed)
 
 	@command(name="help")
-	async def show_help(self, ctx, cmd: Optional[str]):
+	async def help(self, ctx, cmd: Optional[str]):
 		"""."""
 		if cmd is None:
 			menu = MenuPages(source=HelpMenu(ctx, list(self.bot.commands)),

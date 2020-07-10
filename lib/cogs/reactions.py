@@ -18,24 +18,9 @@ class Reactions(Cog):
 		self.bot = bot
 		self.polls = []
 
-	@Cog.listener()
-	async def on_ready(self):
-		if not self.bot.ready:
-			self.colours = {
-				"❤️": self.bot.guild.get_role(653940117680947232), # Red
-				"💛": self.bot.guild.get_role(653940192780222515), # Yellow
-				"💚": self.bot.guild.get_role(653940254293622794), # Green
-				"💙": self.bot.guild.get_role(653940277761015809), # Blue
-				"💜": self.bot.guild.get_role(653940305300815882), # Purple
-				"🖤": self.bot.guild.get_role(653940328453373952), # Black
-			}
-			self.reaction_message = await self.bot.get_channel(723257328819896390).fetch_message(723258202090635285)
-			self.starboard_channel = self.bot.get_channel(724367069004693591)
-			self.bot.cogs_ready.ready_up("reactions")
-
 	@command(name="createpoll", aliases=["mkpoll"])
 	@has_permissions(manage_guild=True)
-	async def create_poll(self, ctx, hours: int, question: str, *options):
+	async def poll(self, ctx, hours: int, question: str, *options):
 		if len(options) > 10:
 			await ctx.send("You can only supply a maximum of 10 options.")
 
