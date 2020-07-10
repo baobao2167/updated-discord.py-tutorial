@@ -145,7 +145,7 @@ class Bot(BotBase):
 			self.update_db()
 
 
-			await channel.send(f'hai lads')
+			await channel.send(f'bots online')
 
 
 			while not self.cogs_ready.all_ready():
