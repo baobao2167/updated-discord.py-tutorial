@@ -13,12 +13,12 @@ class Fun(Cog):
 		self.bot = bot
 
 	@command(name="hello", aliases=["hi"])
-	async def say_hello(self, ctx):
+	async def hi(self, ctx):
 		await ctx.send(f"{choice(('Hello', 'Hi', 'Hey', 'Hiya'))} {ctx.author.mention}!")
 
 	@command(name="dice", aliases=["roll"])
 	@cooldown(1, 60, BucketType.user)
-	async def roll_dice(self, ctx, die_string: str):
+	async def rolldice(self, ctx, die_string: str):
 		dice, value = (int(term) for term in die_string.split("d"))
 
 		if dice <= 25:
@@ -30,23 +30,23 @@ class Fun(Cog):
 			await ctx.send("I can't roll that many dice. Please try a lower number.")
 
 	@command(name="slap", aliases=["hit"])
-	async def slap_member(self, ctx, member: Member, *, reason: Optional[str] = "for no reason"):
+	async def slap(self, ctx, member: Member, *, reason: Optional[str] = "for no reason"):
 		await ctx.send(f"{ctx.author.display_name} slapped {member.mention} {reason}!")
 
-	@slap_member.error
-	async def slap_member_error(self, ctx, exc):
+	@slap.error
+	async def slap_error(self, ctx, exc):
 		if isinstance(exc, BadArgument):
 			await ctx.send("I can't find that member.")
 
 	@command(name="echo", aliases=["say"])
 	@cooldown(1, 15, BucketType.guild)
-	async def echo_message(self, ctx, *, message):
+	async def echo(self, ctx, *, message):
 		await ctx.message.delete()
 		await ctx.send(message)
 
 	@command(name="fact")
 	@cooldown(3, 60, BucketType.guild)
-	async def animal_fact(self, ctx, animal: str):
+	async def animalfact(self, ctx, animal: str):
 		if (animal := animal.lower()) in ("dog", "cat", "panda", "fox", "bird", "koala"):
 			fact_url = f"https://some-random-api.ml/facts/{animal}"
 			image_url = f"https://some-random-api.ml/img/{'birb' if animal == 'bird' else animal}"

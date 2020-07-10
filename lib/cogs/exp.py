@@ -63,7 +63,7 @@ class Exp(Cog):
 			await self.levelup_channel.send(f"Congrats {message.author.mention} - you reached level {new_lvl:,}!")
 
 	@command(name="level")
-	async def display_level(self, ctx, target: Optional[Member]):
+	async def level(self, ctx, target: Optional[Member]):
 		target = target or ctx.author
 
 		xp, lvl = db.record("SELECT XP, Level FROM exp WHERE UserID = ?", target.id) or (None, None)
@@ -75,7 +75,7 @@ class Exp(Cog):
 			await ctx.send("That member is not tracked by the experience system.")
 
 	@command(name="rank")
-	async def display_rank(self, ctx, target: Optional[Member]):
+	async def rank(self, ctx, target: Optional[Member]):
 		target = target or ctx.author
 
 		ids = db.column("SELECT UserID FROM exp ORDER BY XP DESC")
@@ -87,7 +87,7 @@ class Exp(Cog):
 			await ctx.send("That member is not tracked by the experience system.")
 
 	@command(name="leaderboard", aliases=["lb"])
-	async def display_leaderboard(self, ctx):
+	async def leaderboard(self, ctx):
 		records = db.records("SELECT UserID, XP, Level FROM exp ORDER BY XP DESC")
 
 		menu = MenuPages(source=HelpMenu(ctx, records),
