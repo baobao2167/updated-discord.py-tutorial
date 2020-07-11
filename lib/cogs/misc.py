@@ -10,7 +10,7 @@ class Misc(Cog):
 
 	@command(name="prefix")
 	@has_permissions(manage_guild=True)
-	async def change_prefix(self, ctx, new: str):
+	async def prefix(self, ctx, new: str):
 		if len(new) > 5:
 			await ctx.send("The prefix can not be more than 5 characters in length.")
 
@@ -18,8 +18,8 @@ class Misc(Cog):
 			db.execute("UPDATE guilds SET Prefix = ? WHERE GuildID = ?", new, ctx.guild.id)
 			await ctx.send(f"Prefix set to {new}.")
 
-	@change_prefix.error
-	async def change_prefix_error(self, ctx, exc):
+	@prefix.error
+	async def prefix_error(self, ctx, exc):
 		if isinstance(exc, CheckFailure):
 			await ctx.send("You need the Manage Server permission to do that.")
 

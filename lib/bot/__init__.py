@@ -85,15 +85,6 @@ class Bot(BotBase):
 		print("running bot...")
 		super().run(self.TOKEN, reconnect=True)
 
-	async def process_commands(self, message):
-		ctx = await self.get_context(message, cls=Context)
-
-		if ctx.command is not None and ctx.guild is not None:
-			if self.ready:
-				await self.invoke(ctx)
-
-			else:
-				await ctx.send("I'm not ready to receive commands. Please wait a few seconds.")
 
 	async def rules_reminder(self):
 		await self.stdout.send("Remember to adhere to the rules!")

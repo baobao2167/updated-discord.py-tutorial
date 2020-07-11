@@ -64,7 +64,7 @@ class Help(Cog):
 
 	@command(name="help")
 	async def help(self, ctx, cmd: Optional[str]):
-		"""."""
+		"""test"""
 		if cmd is None:
 			menu = MenuPages(source=HelpMenu(ctx, list(self.bot.commands)),
 							 delete_message_after=True,

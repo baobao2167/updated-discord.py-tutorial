@@ -1,7 +1,5 @@
 # Building a discord.py bot (updated)
 
-This repository contains all the code for the bot constructed over the course of my series "Building a discord.py bot (2020)", which can be found here: https://www.youtube.com/playlist?list=PLYeOw6sTSy6ZGyygcbta7GcpI8a5-Cooc.
-
 ## Installation of required components
 
 ### You will need:

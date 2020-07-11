@@ -206,7 +206,7 @@ class Mod(Cog):
 
 	@command(name="addprofanity", aliases=["addswears", "addcurses"])
 	@has_permissions(manage_guild=True)
-	async def add_profanity(self, ctx, *words):
+	async def censor(self, ctx, *words):
 		with open("./data/profanity.txt", "a", encoding="utf-8") as f:
 			f.write("".join([f"{w}\n" for w in words]))
 
@@ -215,7 +215,7 @@ class Mod(Cog):
 
 	@command(name="delprofanity", aliases=["delswears", "delcurses"])
 	@has_permissions(manage_guild=True)
-	async def remove_profanity(self, ctx, *words):
+	async def censorremove(self, ctx, *words):
 		with open("./data/profanity.txt", "r", encoding="utf-8") as f:
 			stored = [w.strip() for w in f.readlines()]
 
@@ -228,8 +228,8 @@ class Mod(Cog):
 	@Cog.listener()
 	async def on_ready(self):
 		if not self.bot.ready:
-			self.log_channel = self.bot.get_channel(711246048756236348)
-			self.mute_role = self.bot.guild.get_role(653941858128494600)
+			self.log_channel = self.bot.get_channel(707527058447925301)
+			self.mute_role = self.bot.guild.get_role(731305160646590599)
 
 			self.bot.cogs_ready.ready_up("mod")
 
