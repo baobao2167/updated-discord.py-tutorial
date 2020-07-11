@@ -99,7 +99,7 @@ class Mod(Cog):
 	@command(name="clear", aliases=["purge"])
 	@bot_has_permissions(manage_messages=True)
 	@has_permissions(manage_messages=True)
-	async def clear_messages(self, ctx, targets: Greedy[Member], limit: Optional[int] = 1):
+	async def clear(self, ctx, targets: Greedy[Member], limit: Optional[int] = 1):
 		def _check(message):
 			return not len(targets) or message.author in targets
 

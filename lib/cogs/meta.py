@@ -39,7 +39,7 @@ class Meta(Cog):
 		))
 
 	@command(name="setactivity")
-	async def set_activity_message(self, ctx, *, text: str):
+	async def activity(self, ctx, *, text: str):
 		self.message = text
 		await self.set()
 
@@ -52,7 +52,7 @@ class Meta(Cog):
 		await message.edit(content=f"Pong! DWSP latency: {self.bot.latency*1000:,.0f} ms. Response time: {(end-start)*1000:,.0f} ms.")
 
 	@command(name="stats")
-	async def show_bot_stats(self, ctx):
+	async def botstats(self, ctx):
 		embed = Embed(title="Bot stats",
 					  colour=ctx.author.colour,
 					  thumbnail=self.bot.user.avatar_url,
