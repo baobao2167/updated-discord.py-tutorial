@@ -130,7 +130,7 @@ class Bot(BotBase):
 			channel = self.get_channel(707527058447925301)
 			self.guild = self.get_guild(707527058447925298)
 			self.stdout = self.get_channel(707527058447925301)
-			self.scheduler.add_job(self.rules_reminder, CronTrigger(day_of_week=0, hour=12, minute=0, second=0))
+			self.scheduler.add_job(self.rules_reminder, CronTrigger(day_of_week=0, hour=0, minute=0, second=1))
 			self.scheduler.start()
 
 			self.update_db()
